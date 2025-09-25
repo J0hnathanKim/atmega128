@@ -22,7 +22,7 @@ int main(void)
     {
 		uint8_t rand_bit = 1 <<(rand() % 8);
 		
-		led_pattern ^= rand_bit;
+		led_pattern ^= rand_bit; // What happens if I set as "=" not "^="?
 		
 		PORTF = led_pattern;
 		_delay_ms(500);
