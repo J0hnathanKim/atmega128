@@ -1,4 +1,4 @@
-// 예제 1
+// 예제 1-3 첫번째 자리에서 0, 두번째 자리에 1, 세번째 자리에 2, 네번째 자리에 3, 첫번째 자리에 4.....
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
