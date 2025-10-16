@@ -1,4 +1,4 @@
-// 예제 1
+// 예제 1 첫 번째 자리의 7sement의 A, B, C 자리를 돌아가며 점등한다.
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
