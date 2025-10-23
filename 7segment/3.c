@@ -1,3 +1,4 @@
+//3번버튼 -> 0으로 초기화
 #define F_CPU 16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
@@ -40,8 +41,10 @@ int main(void) {
 	unsigned int count = 0;  // 현재 표시할 수
 	unsigned char button1_pressed = 0;  // 버튼1 상태
 	unsigned char button2_pressed = 0;  // 버튼2 상태
+	unsigned char button3_pressed = 0;
 	unsigned char prev_button1 = 0;  // 버튼1 이전 상태
 	unsigned char prev_button2 = 0;  // 버튼2 이전 상태
+	unsigned char prev_button3 = 0;
 
 	init_devices();  // 장치 초기화
 
@@ -49,6 +52,7 @@ int main(void) {
 		// 버튼 입력 읽기
 		button1_pressed = (PIND & 0x01) == 0x01;  // D0 핀
 		button2_pressed = (PIND & 0x02) == 0x02;  // D1 핀
+		button3_pressed = (PIND & 0x04) == 0x04;
 
 		// 버튼1: 숫자 증가
 		if (button1_pressed && !prev_button1) {
@@ -64,10 +68,17 @@ int main(void) {
 			else
 			count--;
 		}
+		
+		
+		if (button3_pressed && !prev_button3) {
+					_delay_ms(200);  // 디바운스
+					count = 0;
+				}
 
 		// 버튼 상태 저장
 		prev_button1 = button1_pressed;
 		prev_button2 = button2_pressed;
+		prev_button3 = button3_pressed;
 
 		// 숫자 표시
 		display_number(count);
