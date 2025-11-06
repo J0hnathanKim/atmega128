@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    PORTA = 0xFF;      // 풀업 활성화
+    PORTB = 0xFF;      // 풀업 활성화
     DDRB = 0xFF;       // PORTB 출력 (LED)
 
     // INT0 설정
